@@ -11,9 +11,11 @@
     "lint:watch": "npm run lint -- --watch"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.1",
     "path": "^0.12.7",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
