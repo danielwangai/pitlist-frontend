@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// import styles
+import './bucketlist.scss';
+
+
+function ListAllBuckets(props) {
+	return (
+		<ul className="all-buckets">
+			{props.buckets.map((bucket) => {
+				return (
+					<li key={bucket._id} className="single-bucket">{bucket.name}</li>
+				)
+			})}
+		</ul>
+	)
+}
+
 export default class Bucketlist extends Component {
 	constructor(props) {
 		super(props);
@@ -39,14 +55,7 @@ export default class Bucketlist extends Component {
 	render() {
 		if(this.state.bucketlists.length > 0) {
 			return(
-					this.state.bucketlists.map((bucket) => {
-						return (
-							<div key={bucket._id}>
-								<b>{bucket.name}</b>
-								<p>{bucket.description}</p>
-							</div>
-						)
-					})
+					<ListAllBuckets buckets={this.state.bucketlists} />
 			)
 		}
 		return (
