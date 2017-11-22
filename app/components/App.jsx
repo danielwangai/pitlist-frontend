@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-// import ReactRouter from 'react-router-dom';
-const ReactRouter = require('react-router-dom');
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 // local imports
 import Register from './Authentication/Register/Register.jsx';
 import Login from './Authentication/Login/Login.jsx';
 import Nav from './Nav.jsx';
-
-const Router = ReactRouter.BrowserRouter;
-const Route = ReactRouter.Route;
-const Switch = ReactRouter.Switch;
+import Bucketlist from './Bucketlists/Bucketlist.jsx'
+import {isAuthenticated} from '../utils';
 
 export default class App extends Component {
 	render() {
@@ -20,6 +17,8 @@ export default class App extends Component {
 					<Switch>
 						<Route exact path='/login' component={Login} />
 						<Route exact path='/register' component={Register} />
+						<Route exact path='/bucketlists' 
+							render= {()=> isAuthenticated() ? (<Bucketlist/>): (<Redirect to={{pathname: '/login'}}/>)}/>
 					</Switch>
 				</div>
 			</Router>
