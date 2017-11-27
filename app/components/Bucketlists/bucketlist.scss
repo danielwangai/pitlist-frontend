@@ -1,20 +1,118 @@
-.all-buckets {
-    // background: red;
+@import '../../index.scss';
+
+@mixin flex-column {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    width: 20%;
-    .single-bucket {
-        list-style-type: none;
-        padding: 1em;
-        color: #717171;
-        text-align: left;
-        background: #aed6ff;
-        border: .1px solid #9ed2ff;
-        font-weight: bold;
-        font-size: 1.06em;
-        &:hover {
-            background: rgb(87, 179, 250);
+}
+
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+.bucketlists {
+    @include flex-row;
+
+    .bucket-sidebar {
+        @include flex-column;
+        width: 20%;
+
+        .new-bucket {
+            
+        }
+        .all-buckets {
+            @include flex-column;
+    
+            .single-bucket {
+                list-style-type: none;
+                padding: 1em;
+                color: #717171;
+                text-align: left;
+                background: #aed6ff;
+                border: .1px solid #9ed2ff;
+                font-weight: bold;
+                font-size: 1.06em;
+                &:hover {
+                    background: rgb(87, 179, 250);
+                }
+            }
+        }
+    }
+
+    
+
+    .bucket-detail {
+        @include flex-column;
+        width: 40%;
+        .bucket {
+            background: #ffffff;
+            @include flex-column;
+            width: 100%;
+            .bucket-title {
+                padding: .25em;
+                font-weight: bold;
+                font-size: 1.2em;
+                color: map-get($colors, title);
+            }
+            .bucket-description {
+                font-size: .7em;
+                padding: .5em;
+                line-height: 1.6em;
+            }
+        }
+        .add {
+            color: green;
+            margin: 1em;
+            border-top: .001em solid #f3f3f3;
+            border-bottom: .001em solid #f3f3f3;
+            padding: .6em;
+        }
+        .bucket-items {
+            @include flex-column;
+            width: 100%;
+            
+            .item {
+                @include flex-row;
+                width: 100%;
+                border-bottom: 0.00625rem solid #D8D8D8;
+                
+                .item-state {
+                    width: 2.7rem;
+                    background: #21d437;
+                    margin-right: .8em;
+                }
+                .item-body {
+                    @include flex-column;
+                    margin: .4em;
+
+                    .item-title {
+                        color: map-get($colors, title);
+                        padding: 0.3em;
+                    }
+                    .item-description {
+                        font-size: 0.8em;
+                        padding: 0.2em 0em;
+                        line-height: 1.6em;
+                    }
+                }
+
+                .item-controls {
+                    @include flex-column;
+                    width: 4rem;
+                    position: relative;
+
+                    .item-edit{
+                        color: map-get($colors, title);
+                        padding: 1rem;
+                        margin-top: .21rem;
+                        cursor: pointer;
+                    }
+                    .item-delete {
+                        color: #d81b60;
+                        padding: 1rem;
+                        cursor: pointer;
+                    }
+                }
+            }
         }
     }
 }
